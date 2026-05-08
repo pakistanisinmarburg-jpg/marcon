@@ -1,0 +1,22 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "default": "user"
+    },
+    "bio": {
+      "type": "string",
+      "description": "Short bio or about me"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    }
+  }
+}

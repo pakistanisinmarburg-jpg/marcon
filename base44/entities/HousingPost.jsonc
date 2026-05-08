@@ -1,0 +1,48 @@
+{
+  "name": "HousingPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the housing listing"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "room",
+        "apartment",
+        "wg",
+        "sublet"
+      ],
+      "description": "Type of housing"
+    },
+    "price": {
+      "type": "number",
+      "description": "Monthly rent in EUR"
+    },
+    "location": {
+      "type": "string",
+      "description": "Location/neighborhood"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Image URL"
+    },
+    "contact_email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "is_available": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "title",
+    "price"
+  ]
+}

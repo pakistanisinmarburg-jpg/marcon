@@ -1,0 +1,46 @@
+{
+  "name": "JobPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Job description"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "full_time",
+        "part_time",
+        "internship",
+        "mini_job",
+        "freelance"
+      ],
+      "description": "Employment type"
+    },
+    "location": {
+      "type": "string"
+    },
+    "salary_range": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "title",
+    "company"
+  ]
+}

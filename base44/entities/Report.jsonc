@@ -1,0 +1,41 @@
+{
+  "name": "Report",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Report title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description"
+    },
+    "is_anonymous": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "reviewing",
+        "resolved",
+        "dismissed"
+      ],
+      "default": "pending"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "discrimination",
+        "harassment",
+        "safety",
+        "other"
+      ]
+    }
+  },
+  "required": [
+    "title",
+    "description"
+  ]
+}

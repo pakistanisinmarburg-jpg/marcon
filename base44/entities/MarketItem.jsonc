@@ -1,0 +1,49 @@
+{
+  "name": "MarketItem",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Item name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number",
+      "description": "Price in EUR"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "electronics",
+        "furniture",
+        "clothing",
+        "books",
+        "kitchen",
+        "sports",
+        "other"
+      ]
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "condition": {
+      "type": "string",
+      "enum": [
+        "new",
+        "like_new",
+        "good",
+        "fair"
+      ]
+    },
+    "is_sold": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "title",
+    "price"
+  ]
+}

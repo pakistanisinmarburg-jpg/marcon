@@ -1,0 +1,54 @@
+{
+  "name": "Question",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Question title"
+    },
+    "body": {
+      "type": "string",
+      "description": "Question details"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "visa",
+        "housing",
+        "university",
+        "daily_life",
+        "transport",
+        "health",
+        "other"
+      ]
+    },
+    "replies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "author": {
+            "type": "string"
+          },
+          "author_email": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "is_resolved": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "title",
+    "body"
+  ]
+}
