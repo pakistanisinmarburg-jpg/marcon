@@ -18,6 +18,8 @@ export default function HomePage() {
     })
 
     console.log('SIGN UP:', data, error)
+
+    alert('Sign Up Clicked')
   }
 
   // SIGN IN
@@ -29,6 +31,8 @@ export default function HomePage() {
     })
 
     console.log('SIGN IN:', data, error)
+
+    alert('Login Clicked')
   }
 
   // SIGN OUT
@@ -37,6 +41,8 @@ export default function HomePage() {
     const { error } = await supabase.auth.signOut()
 
     console.log('SIGN OUT:', error)
+
+    alert('Logout Clicked')
   }
 
   // GET CURRENT USER
@@ -47,9 +53,10 @@ export default function HomePage() {
     } = await supabase.auth.getUser()
 
     console.log('CURRENT USER:', user)
+
+    alert('Check Console')
   }
 
-  // RUN ON PAGE LOAD
   useEffect(() => {
     getUser()
   }, [])
@@ -57,37 +64,32 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* YOUR EXISTING COMPONENTS */}
-      <HeroSection />
-      <QuickActions />
-      <WeeklyEvents />
-      <CommunitiesSection />
-
-      {/* TEST AUTH BUTTONS */}
+      {/* FLOATING AUTH PANEL */}
       <div
         style={{
-          position: 'relative',
-          zIndex: 9999,
-          padding: '30px',
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 999999,
           display: 'flex',
-          gap: '15px',
-          background: '#ffffff',
-          justifyContent: 'center',
-          marginTop: '40px',
-          flexWrap: 'wrap'
+          flexDirection: 'column',
+          gap: '10px',
+          background: 'white',
+          padding: '20px',
+          borderRadius: '12px',
+          boxShadow: '0 0 20px rgba(0,0,0,0.2)'
         }}
       >
 
         <button
           onClick={signUp}
           style={{
-            padding: '12px 20px',
+            padding: '12px',
             cursor: 'pointer',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
             background: '#000',
             color: '#fff',
-            fontSize: '16px'
+            border: 'none',
+            borderRadius: '8px'
           }}
         >
           Sign Up
@@ -96,13 +98,12 @@ export default function HomePage() {
         <button
           onClick={signIn}
           style={{
-            padding: '12px 20px',
+            padding: '12px',
             cursor: 'pointer',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
             background: '#0070f3',
             color: '#fff',
-            fontSize: '16px'
+            border: 'none',
+            borderRadius: '8px'
           }}
         >
           Login
@@ -111,13 +112,12 @@ export default function HomePage() {
         <button
           onClick={signOut}
           style={{
-            padding: '12px 20px',
+            padding: '12px',
             cursor: 'pointer',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
             background: '#e11d48',
             color: '#fff',
-            fontSize: '16px'
+            border: 'none',
+            borderRadius: '8px'
           }}
         >
           Logout
@@ -126,19 +126,24 @@ export default function HomePage() {
         <button
           onClick={getUser}
           style={{
-            padding: '12px 20px',
+            padding: '12px',
             cursor: 'pointer',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
             background: '#16a34a',
             color: '#fff',
-            fontSize: '16px'
+            border: 'none',
+            borderRadius: '8px'
           }}
         >
           Current User
         </button>
 
       </div>
+
+      {/* MAIN PAGE */}
+      <HeroSection />
+      <QuickActions />
+      <WeeklyEvents />
+      <CommunitiesSection />
 
     </div>
   )
