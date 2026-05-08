@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import HeroSection from '../components/home/HeroSection'
 import QuickActions from '../components/home/QuickActions'
@@ -9,30 +9,43 @@ import { supabase } from '../lib/supabaseClient'
 
 export default function HomePage() {
 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   // SIGN UP
   const signUp = async () => {
 
     const { data, error } = await supabase.auth.signUp({
-      email: 'test@test.com',
-      password: '12345678'
+      email,
+      password
     })
 
-    console.log('SIGN UP:', data, error)
+    console.log('SIGN UP:', data)
+    console.log('SIGN UP ERROR:', error)
 
-    alert('Sign Up Clicked')
+    if (error) {
+      alert(error.message)
+    } else {
+      alert('Signup successful!')
+    }
   }
 
   // SIGN IN
   const signIn = async () => {
 
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: 'test@test.com',
-      password: '12345678'
+      email,
+      password
     })
 
-    console.log('SIGN IN:', data, error)
+    console.log('SIGN IN:', data)
+    console.log('SIGN IN ERROR:', error)
 
-    alert('Login Clicked')
+    if (error) {
+      alert(error.message)
+    } else {
+      alert('Login successful!')
+    }
   }
 
   // SIGN OUT
@@ -40,9 +53,11 @@ export default function HomePage() {
 
     const { error } = await supabase.auth.signOut()
 
-    console.log('SIGN OUT:', error)
-
-    alert('Logout Clicked')
+    if (error) {
+      alert(error.message)
+    } else {
+      alert('Logged out!')
+    }
   }
 
   // GET CURRENT USER
@@ -53,8 +68,6 @@ export default function HomePage() {
     } = await supabase.auth.getUser()
 
     console.log('CURRENT USER:', user)
-
-    alert('Check Console')
   }
 
   useEffect(() => {
@@ -68,7 +81,7 @@ export default function HomePage() {
       <div
         style={{
           position: 'fixed',
-          bottom: '20px',
+          top: '20px',
           right: '20px',
           zIndex: 999999,
           display: 'flex',
@@ -77,9 +90,36 @@ export default function HomePage() {
           background: 'white',
           padding: '20px',
           borderRadius: '12px',
-          boxShadow: '0 0 20px rgba(0,0,0,0.2)'
+          boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+          width: '300px'
         }}
       >
+
+        <h3>Supabase Auth Test</h3>
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{
+            padding: '12px',
+            borderRadius: '8px',
+            border: '1px solid #ccc'
+          }}
+        />
+
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{
+            padding: '12px',
+            borderRadius: '8px',
+            border: '1px solid #ccc'
+          }}
+        />
 
         <button
           onClick={signUp}
@@ -121,20 +161,6 @@ export default function HomePage() {
           }}
         >
           Logout
-        </button>
-
-        <button
-          onClick={getUser}
-          style={{
-            padding: '12px',
-            cursor: 'pointer',
-            background: '#16a34a',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '8px'
-          }}
-        >
-          Current User
         </button>
 
       </div>
