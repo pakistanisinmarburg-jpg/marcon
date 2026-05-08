@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+
 import HeroSection from '../components/home/HeroSection'
 import QuickActions from '../components/home/QuickActions'
 import WeeklyEvents from '../components/home/WeeklyEvents'
@@ -56,30 +57,88 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* TEST BUTTONS */}
-      <div style={{ padding: '20px', display: 'flex', gap: '10px' }}>
-        <button onClick={signUp}>
-          Sign Up
-        </button>
-
-        <button onClick={signIn}>
-          Login
-        </button>
-
-        <button onClick={signOut}>
-          Logout
-        </button>
-
-        <button onClick={getUser}>
-          Current User
-        </button>
-      </div>
-
       {/* YOUR EXISTING COMPONENTS */}
       <HeroSection />
       <QuickActions />
       <WeeklyEvents />
       <CommunitiesSection />
+
+      {/* TEST AUTH BUTTONS */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 9999,
+          padding: '30px',
+          display: 'flex',
+          gap: '15px',
+          background: '#ffffff',
+          justifyContent: 'center',
+          marginTop: '40px',
+          flexWrap: 'wrap'
+        }}
+      >
+
+        <button
+          onClick={signUp}
+          style={{
+            padding: '12px 20px',
+            cursor: 'pointer',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            background: '#000',
+            color: '#fff',
+            fontSize: '16px'
+          }}
+        >
+          Sign Up
+        </button>
+
+        <button
+          onClick={signIn}
+          style={{
+            padding: '12px 20px',
+            cursor: 'pointer',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            background: '#0070f3',
+            color: '#fff',
+            fontSize: '16px'
+          }}
+        >
+          Login
+        </button>
+
+        <button
+          onClick={signOut}
+          style={{
+            padding: '12px 20px',
+            cursor: 'pointer',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            background: '#e11d48',
+            color: '#fff',
+            fontSize: '16px'
+          }}
+        >
+          Logout
+        </button>
+
+        <button
+          onClick={getUser}
+          style={{
+            padding: '12px 20px',
+            cursor: 'pointer',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            background: '#16a34a',
+            color: '#fff',
+            fontSize: '16px'
+          }}
+        >
+          Current User
+        </button>
+
+      </div>
 
     </div>
   )
