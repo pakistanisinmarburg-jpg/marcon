@@ -8,23 +8,20 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
 
   const handleLogin = async () => {
-
-    setLoading(true)
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password
     })
 
-    setLoading(false)
-
     if (error) {
       alert(error.message)
       return
     }
+
+    alert('Login successful!')
 
     navigate('/')
   }
@@ -32,28 +29,44 @@ export default function LoginPage() {
   return (
     <div style={{ padding: '40px' }}>
 
-      <h1>Login</h1>
+      <h1>Login Page</h1>
 
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        style={{
+          padding: '12px',
+          width: '300px',
+          marginBottom: '20px'
+        }}
       />
 
-      <br /><br />
+      <br />
 
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        style={{
+          padding: '12px',
+          width: '300px',
+          marginBottom: '20px'
+        }}
       />
 
-      <br /><br />
+      <br />
 
-      <button onClick={handleLogin}>
-        {loading ? 'Loading...' : 'Login'}
+      <button
+        onClick={handleLogin}
+        style={{
+          padding: '12px 20px',
+          cursor: 'pointer'
+        }}
+      >
+        Login
       </button>
 
     </div>
