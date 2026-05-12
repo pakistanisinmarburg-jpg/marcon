@@ -1,21 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-
-export default function App() {
+function App() {
 
   return (
-    <BrowserRouter>
-
-      <Routes>
-
-        <Route path="/" element={<HomePage />} />
-
-        <Route path="/login" element={<LoginPage />} />
-
-      </Routes>
-
-    </BrowserRouter>
+    <div
+      style={{
+        padding: '40px',
+        fontSize: '30px'
+      }}
+    >
+      App Working
+    </div>
   )
 }
+
+export default App
