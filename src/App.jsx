@@ -1,8 +1,15 @@
-import HomePage from './pages/HomePage'
-
 function App() {
 
-  return <HomePage />
+  return (
+    <div
+      style={{
+        padding: '40px',
+        fontSize: '30px'
+      }}
+    >
+      App Working
+    </div>
+  )
 }
 
 export default App
